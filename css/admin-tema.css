@@ -1,0 +1,453 @@
+/* =========================================================
+   admin-tema.css — Gebze Belediyesi Yönetim Paneli teması
+   Tamamı body.admin-govde altında kapsanmıştır; bu yüzden
+   herkese açık sitenin css/style.css dosyasını asla etkilemez.
+   ========================================================= */
+
+:root {
+    --ay-mavi: #3b82f6;
+    --ay-mavi-koyu: #2563eb;
+    --ay-mavi-bg: #eaf2ff;
+    --ay-yesil: #22c55e;
+    --ay-yesil-bg: #e8f9ee;
+    --ay-mor: #8b5cf6;
+    --ay-mor-bg: #f2ecfe;
+    --ay-turuncu: #f97316;
+    --ay-turuncu-bg: #fff1e6;
+    --ay-bg: #f4f6fb;
+    --ay-kenarlik: #e9edf3;
+    --ay-metin: #1f2937;
+    --ay-metin-soluk: #8a94a6;
+}
+
+/* ---------- Genel zemin ---------- */
+body.admin-govde { background-color: var(--ay-bg); }
+
+/* ---------- Sidebar ---------- */
+body.admin-govde .admin-sidebar {
+    background: #ffffff;
+    border-right: 1px solid var(--ay-kenarlik);
+    box-shadow: 0 0 24px rgba(17, 24, 39, .04);
+    height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(37,99,235,.3) transparent;
+}
+body.admin-govde .admin-sidebar::-webkit-scrollbar { width: 6px; }
+body.admin-govde .admin-sidebar::-webkit-scrollbar-track { background: transparent; }
+body.admin-govde .admin-sidebar::-webkit-scrollbar-thumb { background: rgba(37,99,235,.3); border-radius: 10px; }
+body.admin-govde .admin-sidebar::-webkit-scrollbar-thumb:hover { background: rgba(37,99,235,.5); }
+body.admin-govde .admin-sidebar-marka {
+    color: var(--ay-metin);
+    border-bottom-color: var(--ay-kenarlik);
+    text-decoration: none;
+}
+body.admin-govde .admin-sidebar-marka:hover { color: var(--ay-mavi-koyu); }
+body.admin-govde .admin-sidebar-marka img { background: var(--ay-bg); }
+
+/* Profil bloğu (logo altı) */
+body.admin-govde .admin-profil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+    padding: 16px 16px 18px 16px;
+    border-bottom: 1px solid var(--ay-kenarlik);
+    margin-bottom: 8px;
+    text-decoration: none;
+    transition: background .15s ease;
+}
+body.admin-govde .admin-profil:hover { background: var(--ay-bg); }
+body.admin-govde .admin-profil-avatar {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--ay-mavi) 0%, var(--ay-mor) 100%);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+body.admin-govde .admin-profil-ad { color: var(--ay-metin); font-weight: 700; font-size: .92rem; }
+body.admin-govde .admin-profil-unvan { color: var(--ay-metin-soluk); font-size: .74rem; margin-top: -4px; }
+body.admin-govde .admin-profil-durum {
+    display: inline-flex; align-items: center; gap: 5px;
+    color: var(--ay-yesil);
+    font-size: .74rem;
+    font-weight: 700;
+}
+body.admin-govde .admin-profil-durum i { font-size: .5rem; }
+
+/* ---------- Yönetici avatar renkleri (fotoğrafı olmayanlar için baş harf zemini) ---------- */
+body.admin-govde .admin-avatar-mavi     { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
+body.admin-govde .admin-avatar-yesil    { background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); }
+body.admin-govde .admin-avatar-mor      { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); }
+body.admin-govde .admin-avatar-turuncu  { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+body.admin-govde .admin-avatar-kirmizi  { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); }
+body.admin-govde .admin-avatar-pembe    { background: linear-gradient(135deg, #ec4899 0%, #db2777 100%); }
+body.admin-govde .admin-avatar-lacivert { background: linear-gradient(135deg, #0b3d62 0%, #082c47 100%); }
+body.admin-govde .admin-avatar-altin    { background: linear-gradient(135deg, #eab676 0%, #d4a53d 100%); }
+body.admin-govde .admin-avatar-foto { background: none; padding: 0; overflow: hidden; }
+body.admin-govde .admin-avatar-foto img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+/* ---------- Yönetici düzenleme formlarındaki renk seçici (swatch) ---------- */
+body.admin-govde .admin-renk-secici { display: flex; flex-wrap: wrap; gap: 10px; }
+body.admin-govde .admin-renk-secici input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+body.admin-govde .admin-renk-secici label {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 1px var(--ay-kenarlik);
+    transition: box-shadow .15s ease, transform .15s ease;
+}
+body.admin-govde .admin-renk-secici label:hover { transform: scale(1.08); }
+body.admin-govde .admin-renk-secici input[type="radio"]:checked + label {
+    box-shadow: 0 0 0 2px var(--ay-metin);
+}
+
+/* ---------- Yöneticiler tablosundaki küçük avatar ---------- */
+body.admin-govde .admin-tablo-avatar {
+    width: 40px; height: 40px; flex-shrink: 0;
+    border-radius: 50%;
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: .9rem;
+}
+
+body.admin-govde .admin-sidebar .nav-grup-baslik { color: #a7afbc; }
+body.admin-govde .admin-sidebar .nav-link {
+    color: #4b5768;
+    margin: 2px 12px;
+    padding: 9px 12px;
+    border-radius: 10px;
+    border-left: none;
+}
+body.admin-govde .admin-sidebar .nav-link:hover { color: var(--ay-mavi-koyu); background: var(--ay-mavi-bg); }
+body.admin-govde .admin-sidebar .nav-link.active {
+    color: var(--ay-mavi-koyu);
+    background: var(--ay-mavi-bg);
+    border-left-color: transparent;
+    font-weight: 700;
+}
+body.admin-govde .admin-menu-tetik { background: var(--ay-mavi); }
+
+/* Alt galeri bağlantıları: ilgili içerik bağlantısının hemen altında, girintili ve daha soluk */
+body.admin-govde .admin-sidebar .nav-link-galeri {
+    margin-left: 26px;
+    padding: 6px 12px;
+    font-size: .8rem;
+    color: var(--ay-metin-soluk);
+}
+body.admin-govde .admin-sidebar .nav-link-galeri i { font-size: .82rem; }
+body.admin-govde .admin-sidebar .nav-link-galeri:hover { color: var(--ay-mavi-koyu); background: var(--ay-mavi-bg); }
+body.admin-govde .admin-sidebar .nav-link-galeri.active {
+    color: var(--ay-mavi-koyu);
+    background: var(--ay-mavi-bg);
+    font-weight: 700;
+}
+
+/* ---------- Topbar ---------- */
+body.admin-govde .admin-ust-bar { background: #fff; border-bottom-color: var(--ay-kenarlik); }
+body.admin-govde .admin-ust-bar-sag { display: flex; align-items: center; gap: 14px; }
+body.admin-govde .admin-arama-genel {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--ay-bg);
+    border: 1px solid var(--ay-kenarlik);
+    border-radius: 999px;
+    padding: 7px 16px;
+    min-width: 220px;
+    color: var(--ay-metin-soluk);
+}
+body.admin-govde .admin-arama-genel input {
+    border: none; background: transparent; outline: none;
+    font-size: .85rem; width: 100%; color: var(--ay-metin);
+}
+body.admin-govde .admin-bildirim-btn {
+    position: relative;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--ay-kenarlik);
+    background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    color: #4b5768;
+    font-size: 1.05rem;
+}
+body.admin-govde .admin-bildirim-rozet {
+    position: absolute; top: -4px; right: -4px;
+    background: #ef4444; color: #fff;
+    font-size: .62rem; font-weight: 800;
+    border-radius: 999px;
+    min-width: 17px; height: 17px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 4px;
+    border: 2px solid #fff;
+}
+body.admin-govde .admin-cikis-btn {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--ay-kenarlik);
+    background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    color: #ef4444;
+    font-size: 1rem;
+}
+body.admin-govde .admin-cikis-btn:hover { background: #fef2f2; }
+
+/* ---------- Karşılama banner'ı ---------- */
+body.admin-govde .admin-karsilama {
+    background: linear-gradient(120deg, var(--ay-mavi) 0%, var(--ay-mavi-koyu) 100%);
+    color: #fff;
+    border-radius: 18px;
+    padding: 26px 28px;
+    margin-bottom: 22px;
+    box-shadow: 0 10px 24px rgba(37, 99, 235, .18);
+}
+body.admin-govde .admin-karsilama h4 { font-weight: 800; margin-bottom: 4px; }
+body.admin-govde .admin-karsilama p { margin: 0; color: rgba(255,255,255,.88); font-size: .9rem; }
+
+/* ---------- İstatistik kartları ---------- */
+body.admin-govde .admin-istatistik-kutu {
+    display: flex; align-items: center; gap: 16px;
+    border: 1px solid var(--ay-kenarlik);
+    box-shadow: 0 2px 10px rgba(17,24,39,.04);
+}
+body.admin-govde .admin-istatistik-kutu .ikon-cip {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+body.admin-govde .admin-istatistik-kutu--mavi .ikon-cip { background: var(--ay-mavi-bg); color: var(--ay-mavi-koyu); }
+body.admin-govde .admin-istatistik-kutu--yesil .ikon-cip { background: var(--ay-yesil-bg); color: #16a34a; }
+body.admin-govde .admin-istatistik-kutu--mor .ikon-cip { background: var(--ay-mor-bg); color: #7c3aed; }
+body.admin-govde .admin-istatistik-kutu--turuncu .ikon-cip { background: var(--ay-turuncu-bg); color: #ea580c; }
+body.admin-govde .admin-istatistik-kutu .sayi { color: var(--ay-metin); font-size: 1.7rem; }
+body.admin-govde .admin-istatistik-kutu .etiket { color: var(--ay-metin-soluk); }
+
+/* ---------- Son Aktiviteler ---------- */
+body.admin-govde .admin-panel-baslik {
+    font-weight: 800; color: var(--ay-metin); font-size: .95rem; margin-bottom: 14px;
+}
+body.admin-govde .admin-aktivite-satir {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid #f1f3f7;
+    font-size: .85rem;
+}
+body.admin-govde .admin-aktivite-satir:last-child { border-bottom: none; }
+body.admin-govde .admin-aktivite-nokta { font-size: .5rem; margin-top: 6px; flex-shrink: 0; }
+body.admin-govde .admin-aktivite-metin { color: var(--ay-metin); }
+body.admin-govde .admin-aktivite-zaman { display: block; color: var(--ay-metin-soluk); font-size: .74rem; margin-top: 1px; }
+body.admin-govde .admin-bos-aktivite { color: var(--ay-metin-soluk); font-size: .85rem; padding: 10px 0; }
+body.admin-govde a.admin-aktivite-satir--tiklanabilir {
+    text-decoration: none;
+    border-radius: 8px;
+    margin: 0 -8px;
+    padding: 9px 8px;
+    transition: background-color .15s ease;
+}
+body.admin-govde a.admin-aktivite-satir--tiklanabilir:hover {
+    background-color: #f7f9fc;
+}
+body.admin-govde a.admin-aktivite-satir--tiklanabilir:hover .admin-aktivite-metin {
+    text-decoration: underline;
+}
+
+/* ---------- Anasayfa: Hızlı İşlemler + Yöneticiler yatay kutucuklar ---------- */
+body.admin-govde .admin-kart-yatay { flex: 1; }
+body.admin-govde .admin-kart-yatay .card-body { padding: 18px 20px; }
+
+/* ---------- Anasayfa: Yöneticiler mini listesi (yatay, yan yana) ---------- */
+body.admin-govde .admin-yonetici-liste {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 22px;
+}
+body.admin-govde .admin-yonetici-satir {
+    display: flex; align-items: center; gap: 10px;
+    padding: 0;
+    border-bottom: none;
+}
+body.admin-govde .admin-mini-avatar {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--ay-mavi) 0%, var(--ay-mor) 100%);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: .8rem;
+}
+body.admin-govde .admin-yonetici-ad { font-size: .85rem; font-weight: 600; color: var(--ay-metin); }
+body.admin-govde .admin-yonetici-kullanici { display: block; font-size: .74rem; color: var(--ay-metin-soluk); }
+body.admin-govde .admin-panel-tumunu-gor {
+    display: inline-block; margin-top: 10px; font-size: .8rem; font-weight: 600;
+    color: var(--ay-mavi); text-decoration: none;
+}
+body.admin-govde .admin-panel-tumunu-gor:hover { text-decoration: underline; }
+
+/* ---------- Hızlı İşlemler (öne çıkan 4, tek satır) ---------- */
+body.admin-govde .admin-hizli-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+body.admin-govde .admin-hizli-islem {
+    position: relative;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+    background: #fff;
+    border: 1px solid var(--ay-kenarlik);
+    border-radius: 12px;
+    padding: 10px;
+    text-decoration: none;
+    transition: box-shadow .15s ease, transform .15s ease;
+}
+body.admin-govde .admin-hizli-islem:hover { box-shadow: 0 6px 16px rgba(17,24,39,.08); transform: translateY(-1px); }
+body.admin-govde .admin-hizli-islem .ikon-cip {
+    width: 32px; height: 32px;
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .95rem;
+}
+body.admin-govde .admin-hizli-islem span.baslik { color: var(--ay-metin); font-weight: 700; font-size: .74rem; line-height: 1.2; }
+body.admin-govde .admin-hizli-islem--mavi .ikon-cip { background: var(--ay-mavi-bg); color: var(--ay-mavi-koyu); }
+body.admin-govde .admin-hizli-islem--yesil .ikon-cip { background: var(--ay-yesil-bg); color: #16a34a; }
+body.admin-govde .admin-hizli-islem--mor .ikon-cip { background: var(--ay-mor-bg); color: #7c3aed; }
+body.admin-govde .admin-hizli-islem--turuncu .ikon-cip { background: var(--ay-turuncu-bg); color: #ea580c; }
+body.admin-govde .admin-hizli-islem .admin-hizli-rozet {
+    position: absolute; top: 10px; right: 10px;
+    background: #ef4444; color: #fff;
+    font-size: .68rem; font-weight: 800;
+    border-radius: 999px;
+    min-width: 18px; height: 18px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 4px;
+}
+
+/* ---------- Sistem Durumu şeridi ---------- */
+body.admin-govde .admin-durum-seridi {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+body.admin-govde .admin-durum-kutu {
+    display: flex; align-items: center; gap: 10px;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: .82rem;
+    font-weight: 600;
+}
+body.admin-govde .admin-durum-kutu i { font-size: .6rem; }
+body.admin-govde .admin-durum-kutu .deger { font-weight: 800; margin-left: auto; }
+body.admin-govde .admin-durum-kutu--basarili { background: var(--ay-yesil-bg); color: #15803d; }
+body.admin-govde .admin-durum-kutu--bilgi { background: var(--ay-mavi-bg); color: var(--ay-mavi-koyu); }
+
+/* ---------- Kısayol kutuları (mevcut tam modül listesi) ---------- */
+body.admin-govde .admin-kisayol-kutu i {
+    display:flex; align-items:center; justify-content:center;
+    width:42px; height:42px; border-radius:12px;
+    background: var(--ay-mavi-bg); color: var(--ay-mavi-koyu); font-size:1.2rem;
+}
+
+/* ---------- Kartlar / tablo / rozet / dropdown ---------- */
+body.admin-govde .btn-lacivert,
+body.admin-govde .btn-belediye {
+    background-color: var(--ay-mavi);
+    border-color: var(--ay-mavi);
+    border-radius: 10px;
+}
+body.admin-govde .btn-lacivert:hover,
+body.admin-govde .btn-belediye:hover {
+    background-color: var(--ay-mavi-koyu);
+    border-color: var(--ay-mavi-koyu);
+}
+body.admin-govde .admin-islem-dropdown .dropdown-menu { border-radius: 10px; box-shadow: 0 12px 28px rgba(17,24,39,.12); padding: 6px; border: 1px solid var(--ay-kenarlik); }
+body.admin-govde .admin-islem-dropdown .dropdown-item { border-radius: 8px; }
+body.admin-govde .admin-islem-dropdown .dropdown-item i { color: var(--ay-mavi-koyu); }
+body.admin-govde .admin-islem-dropdown .dropdown-item:hover { background-color: var(--ay-mavi-bg); color: var(--ay-mavi-koyu); }
+body.admin-govde .admin-islem-dropdown .dropdown-item:active { background-color: var(--ay-mavi); }
+
+body.admin-govde .badge { font-weight: 700; border-radius: 20px; padding: .35em .75em; }
+body.admin-govde .badge.bg-secondary { background-color:#eef1f4 !important; color:#55606b !important; }
+body.admin-govde .badge.bg-success { background-color:#e5f7ea !important; color:#1e8a4c !important; }
+body.admin-govde .badge.bg-danger { background-color:#fdeaea !important; color:#c0392b !important; }
+body.admin-govde .badge.bg-warning { background-color:#fdf3dc !important; color:#96721c !important; }
+body.admin-govde .badge.bg-info { background-color:#e7f0ff !important; color:#2f5fd6 !important; }
+
+body.admin-govde .admin-kart { border: 1px solid var(--ay-kenarlik); border-radius: 14px; }
+body.admin-govde .admin-kart thead.table-light th {
+    text-transform: uppercase; font-size: .72rem; letter-spacing: .4px;
+    color: var(--ay-metin-soluk); background-color: #fafbfd; border-bottom-color: var(--ay-kenarlik);
+}
+body.admin-govde .admin-kart .table-hover > tbody > tr:hover > * { background-color: #f7f9fc; }
+
+body.admin-govde .admin-arama-kutusu { max-width: 320px; }
+body.admin-govde .admin-arama-kutusu .input-group-text { background: #fff; border-right: none; color: #9aa7b2; }
+body.admin-govde .admin-arama-kutusu .form-control { border-left: none; }
+body.admin-govde .admin-arama-kutusu .form-control:focus { box-shadow: 0 0 0 3px var(--ay-mavi-bg); border-color: var(--ay-mavi); }
+
+body.admin-govde .admin-thumb { width: 64px; height: 44px; object-fit: cover; border-radius: 8px; background: var(--ay-bg); }
+body.admin-govde .admin-thumb-tam { width: 64px; height: 64px; object-fit: contain; border-radius: 8px; background: var(--ay-bg); }
+
+body.admin-govde .alert { border-radius: 10px; border: none; }
+body.admin-govde .alert-success { background-color: var(--ay-yesil-bg); color: #15803d; }
+
+body.admin-govde .btn-goruntule-kutu {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    font-size: .82rem;
+    font-weight: 600;
+    line-height: 1.2;
+    border-radius: 8px;
+    border: 1px solid var(--altin, #d4a53d);
+    background: #ffffff;
+    color: var(--altin, #d4a53d);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background .15s ease, color .15s ease;
+}
+body.admin-govde .btn-goruntule-kutu:hover {
+    background: var(--altin, #d4a53d);
+    border-color: var(--altin, #d4a53d);
+    color: #fff;
+}
+
+@media (max-width: 991.98px) {
+    body.admin-govde .admin-durum-seridi { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 767.98px) {
+    body.admin-govde .admin-hizli-grid { grid-template-columns: 1fr 1fr; }
+    body.admin-govde .admin-durum-seridi { grid-template-columns: 1fr; }
+    body.admin-govde .admin-arama-genel { display: none; }
+}
+
+/* ---------- Yönetim listeleri sayfalama (20 kayıttan fazlasında sayfa numaraları) ----------
+   Tüm "*-yonet.php" listeleme sayfalarında ortak kullanılan, admin panelinin kendi
+   mavi temasıyla uyumlu yuvarlak sayfa numarası tasarımı. */
+body.admin-govde .admin-sayfalama .page-link {
+    color: var(--ay-mavi-koyu);
+    border-color: var(--ay-kenarlik);
+}
+body.admin-govde .admin-sayfalama .page-link:hover {
+    background-color: var(--ay-mavi-bg);
+    color: var(--ay-mavi-koyu);
+}
+body.admin-govde .admin-sayfalama .page-link:focus {
+    box-shadow: none;
+}
+body.admin-govde .admin-sayfalama .page-item.active .page-link {
+    background-color: var(--ay-mavi);
+    border-color: var(--ay-mavi);
+    color: #fff;
+}
+body.admin-govde .admin-sayfalama .page-item.disabled .page-link {
+    color: #adb5bd;
+    background-color: #fff;
+}
+body.admin-govde .admin-sayfalama-bilgi {
+    color: var(--ay-metin-soluk);
+    font-size: .82rem;
+}
