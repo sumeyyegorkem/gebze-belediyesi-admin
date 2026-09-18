@@ -1,6 +1,6 @@
 # Gebze Belediyesi — Admin Panel
 
-Gebze Belediyesi web sitesinin içerik yönetim (admin) panelidir. Bu depo kendi başına çalışır (site ile paylaşılan `config/`, `css/`, `img/`, `includes/`, `js/` dosyalarının birer kopyasını içerir). Ziyaretçi tarafındaki site ayrı bir depodadır: [gebze-belediyesi](https://github.com/KULLANICI_ADIN/gebze-belediyesi)
+Gebze Belediyesi web sitesinin içerik yönetim (admin) panelidir. Bu depo kendi başına çalışır (site ile paylaşılan `config/`, `css/`, `img/`, `includes/`, `js/` dosyalarının birer kopyasını içerir). Ziyaretçi tarafındaki site ayrı bir depodadır: [gebze-belediyesi](https://github.com/sumeyyegorkem/gebze-belediyesi)
 
 ## 📋 Proje Hakkında
 
@@ -32,11 +32,11 @@ gebze-belediyesi-admin/
 ## 🚀 Kurulum
 
 1. [XAMPP](https://www.apachefriends.org/) indirip kurun, Apache ve MySQL servislerini başlatın.
-2. Önce ana siteyi kurun ([gebze-belediyesi](https://github.com/KULLANICI_ADIN/gebze-belediyesi) deposundaki adımları izleyin) — veritabanı ikisi için de ortaktır.
+2. Önce ana siteyi kurun ([gebze-belediyesi](https://github.com/sumeyyegorkem/gebze-belediyesi) deposundaki adımları izleyin) — veritabanı ikisi için de ortaktır.
 3. Bu depoyu, sitenin yanına `admin` adıyla klonlayın:
    ```
    cd C:\xampp\htdocs\gebze-belediyesi
-   git clone https://github.com/KULLANICI_ADIN/gebze-belediyesi-admin.git admin
+   git clone https://github.com/sumeyyegorkem/gebze-belediyesi-admin.git admin
    ```
 4. `config/db.php` içindeki veritabanı bilgilerinin kendi XAMPP kurulumunuzla eşleştiğinden emin olun.
 5. Tarayıcıdan açın: `http://localhost/gebze-belediyesi/admin/login.php`
