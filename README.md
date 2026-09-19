@@ -63,9 +63,9 @@ gebze-belediyesi-admin/
 - İşlem Geçmişi (kim ne zaman ne değiştirdi)
 - İstatistik gösteren Dashboard
 
-## 👥 Ekip
+## 👥 Üretici
 
-Sümeyye
+Sümeyye Görkem
 
 ## 📝 Notlar
 
